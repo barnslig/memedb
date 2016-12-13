@@ -1,0 +1,22 @@
+{{template "header" $}}
+
+<h2>Does any of these memes look like a duplicate of this?</h2>
+
+<h3>Current meme</h3>
+<img src="{{$.CurrentMemeFilepath}}" />
+<br />
+<form action="/delete/{{$.CurrentMeme.Id}}" method="post">
+	{{$.csrfField}}
+	<input type="hidden" name="id" value="{{$.CurrentMeme.Id}}" />
+	<button type="submit">Yep, delete this shit</button>
+</form>
+<a href="/edit/{{$.CurrentMeme.Id}}"><button>Nope</button></a>
+
+<h3>Possible duplicates</h3>
+{{range $.Memes}}
+	<img src="{{.Filepath}}" />
+	<p>Distance: {{.Distance}}</p>
+	<hr />
+{{end}}
+
+{{template "footer" $}}

@@ -1,0 +1,40 @@
+{{template "header" $}}
+
+<h2>Meme Search</h2>
+
+<form action="/search" method="get">
+	<input type="search" name="q" value="{{$.Query}}" />
+	<button type="submit">lets go …</button>
+</form>
+
+<h3>how2search:</h3>
+<dl>
+	<dt>Search for a particular tag</dt>
+	<dd>Tag:wat</dd>
+
+	<dt>Search for a gif</dt>
+	<dd>Filetype:gif</dd>
+
+	<dt>Search for everything except wat</dt>
+	<dd>-Tag:wat</dd>
+</dl>
+
+<ul>
+	{{range $.Results}}
+		<li>
+			<img src="{{.Filepath}}" /><br />
+			<a href="/edit/{{.Meme.Id}}"><button>Edit</button></a>
+			<a href="{{.Filepath}}">Link</a>
+			Tags: 
+			{{range .Tags}}
+				<a href="/tag/{{.Tag}}">{{.Tag}}</a>
+			{{end}}
+		</li>
+	{{end}}
+</ul>
+
+{{range $.SearchResults.Hits}}
+	{{.}}
+{{end}}
+
+{{template "footer" $}}

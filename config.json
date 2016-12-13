@@ -1,0 +1,9 @@
+{
+	"http-listen": "localhost:8080",
+	"bleve-index": "searchindex.bleve",
+	"template-dir": "templates",
+	"uploads-dir": "uploads",
+	"uploads-path": "/_/",
+	"database": "database.db",
+	"secret": "kyrcqK1a1Z6Roy8Sv0CaS6SroVrXtUNo"
+}

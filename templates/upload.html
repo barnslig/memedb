@@ -1,0 +1,21 @@
+{{template "header" $}}
+
+<h2>Meme Uploader</h2>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+	{{$.csrfField}}
+
+	<label>
+		UR FILE:
+		<input type="file" name="file" />
+	</label>
+
+	<label>
+		UR TAGS:
+		<input type="text" name="tags" />
+	</label>
+
+	<button type="submit">Upload</button>
+</form>
+
+{{template "footer" $}}
