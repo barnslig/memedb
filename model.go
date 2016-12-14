@@ -18,8 +18,8 @@ CREATE TABLE IF NOT EXISTS memes (
 CREATE INDEX IF NOT EXISTS memes_index ON memes(id, salt);
 
 CREATE TABLE IF NOT EXISTS memes_tags (
-	meme_id INTEGER UNIQUE NOT NULL,
-	tag_id INTEGER UNIQUE NOT NULL
+	meme_id INTEGER NOT NULL,
+	tag_id INTEGER NOT NULL
 );
 CREATE INDEX IF NOT EXISTS memes_tags_index ON memes_tags(meme_id, tag_id);
 CREATE INDEX IF NOT EXISTS tags_memes_index ON memes_tags(tag_id, meme_id);
