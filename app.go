@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"path"
+	"log"
 )
 
 type AppConfig struct {
@@ -84,6 +85,7 @@ func CreateApp(cfg AppConfig) (app *App) {
 
 func (app *App) ListenAndServe() {
 	defer app.db.Close()
+	log.Printf("Now listening on %s\n", app.cfg.HttpListen)
 	panic(http.ListenAndServe(app.cfg.HttpListen, app.handler))
 }
 

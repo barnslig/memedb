@@ -45,8 +45,13 @@ func (app *App) UploadHandler(w http.ResponseWriter, r *http.Request) {
 		memeId := fmt.Sprintf("%v", id)
 
 		// Create the hash ID
-		hd := hashids.New()
-		hash, err := hd.EncodeInt64([]int64{id, salt})
+		hd := hashids.NewData()
+		hd.Salt = string(salt)
+		h, err := hashids.NewWithData(hd)
+		if err != nil {
+			panic(err)
+		}
+		hash, err := h.EncodeInt64([]int64{id})
 		if err != nil {
 			panic(err)
 		}

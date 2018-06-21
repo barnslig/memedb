@@ -27,7 +27,7 @@
 			<a href="{{.Filepath}}">Link</a>
 			Tags: 
 			{{range .Tags}}
-				<a href="/tag/{{.Tag}}">{{.Tag}}</a>
+				<a href="/search?q=Tags:%22{{.Tag}}%22">{{.Tag}}</a>
 			{{end}}
 		</li>
 	{{end}}
